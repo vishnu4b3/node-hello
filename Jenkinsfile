@@ -12,6 +12,7 @@ pipeline {
         stage('Build and push docker image') {
             steps {
                 script {
+                    sh 'docker --version'
                     def dockerImage = docker.build("pvishnu/node-hello:master")
                     docker.withRegistry('', 'DockerHub_Credentials') {
                         dockerImage.push('master')
