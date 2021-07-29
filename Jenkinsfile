@@ -8,18 +8,15 @@ pipeline {
                 url: 'https://github.com/vishnu4b3/node-hello.git'
         }
     }
-    
-        stage('Build and push docker image') {
-            steps {
-                script {
-                    sh 'cd /usr/local/bin/'
-                    sh '/usr/local/bin/docker --version'
-                    sh '/usr/local/bin/docker build -t pvishnu/node-hello:${BUILD_NUMBER} .'
-                    sh '/usr/local/bin/docker push pvishnu/node-hello:${BUILD_NUMBER}'
-                    
-                    }
+    stage('Building our image') {
+        steps {
+            script { 
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
                 }
-            }
+        }
+    }        
+    
+        
         }
  //       stage('Deploy to remote docker host') {
   //          environment {
