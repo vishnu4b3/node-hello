@@ -14,7 +14,7 @@ pipeline {
                 script {
                     sh 'cd /usr/local/bin/'
                     sh '/usr/local/bin/docker --version'
-                    sh '/usr/local/bin/docker build -t pvishnu/node-hello:v1'
+                    sh '/usr/local/bin/docker build -t pvishnu/node-hello:v1 .'
                     sh '/usr/local/bin/docker push pvishnu/node-hello'
                     
                     }
