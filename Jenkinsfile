@@ -14,9 +14,9 @@ pipeline {
                 script {
                     sh 'cd /usr/local/bin/'
                     sh '/usr/local/bin/docker --version'
-                    def dockerImage = docker.build("pvishnu/node-hello:master")
-                    docker.withRegistry('', 'DockerHub_Credentials') {
-                        dockerImage.push('master')
+                    sh '/usr/local/bin/docker build -t pvishnu/node-hello'
+                    sh '/usr/local/bin/docker push pvishnu/node-hello'
+                    
                     }
                 }
             }
