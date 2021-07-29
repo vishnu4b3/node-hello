@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     sh 'cd /usr/local/bin/'
-                    sh 'docker --version'
+                    sh '/usr/local/bin/docker --version'
                     def dockerImage = docker.build("pvishnu/node-hello:master")
                     docker.withRegistry('', 'DockerHub_Credentials') {
                         dockerImage.push('master')
