@@ -1,5 +1,6 @@
 - hosts: localhost
-  become: true  
+  become: true
+  become_user: pvishnu
   vars:
   - dockerfile_folder: "Dockerfile"
   - docker_image_name: "pvishnu/node-hello:11"
