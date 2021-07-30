@@ -1,15 +1,13 @@
 ---
-- hosts: 
-    localhost:
-     vars:
-       - dockerfile_folder: "Dockerfile"
-       - docker_image_name: "pvishnu/node-hello:11"
-       - docker_container_name: "node-hello"
-       - patting_ssh_port: "2222"
-       - patting_http_port: "8080"
-  become: true
-  become_user: pvishnu
-  ansible_become_method: sudo
+- hosts: localhost
+  connection: local
+  become: true  
+  vars:
+  - dockerfile_folder: "Dockerfile"
+  - docker_image_name: "pvishnu/node-hello:11"
+  - docker_container_name: "node-hello"
+  - patting_ssh_port: "2222"
+  - patting_http_port: "8080"
   tasks:
   - name: "launch docker container"
     docker_container:
