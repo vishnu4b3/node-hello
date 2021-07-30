@@ -14,7 +14,7 @@ pipeline {
             steps {
                 script {
                      echo $PATH
-                    def dockerImage = docker.build("pvishnu/node-hello:${BUILD_NUMBER")
+                    def dockerImage = docker.build('pvishnu/node-hello:${BUILD_NUMBER')
                     docker.withRegistry('', '	DockerHub_Credentials') {
                         dockerImage.push('${BUILD_NUMBER')
                     }
