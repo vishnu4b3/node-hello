@@ -12,6 +12,7 @@ pipeline {
         stage('Build and push docker image') {
             steps {
                 script {
+                    sh 'echo $PATH'
                     sh 'cd /usr/local/bin/'
                     sh '/usr/local/bin/docker --version'
                     sh '/usr/local/bin/docker build -t pvishnu/node-hello:${BUILD_NUMBER} .'
