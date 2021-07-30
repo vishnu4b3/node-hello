@@ -1,0 +1,18 @@
+- hosts: localhost
+  become: true  
+  vars:
+  - dockerfile_folder: "Dockerfile"
+  - docker_image_name: "pvishnu/node-hello:11"
+  - docker_container_name: "node-hello"
+  - patting_ssh_port: "2222"
+  - patting_http_port: "8080"
+  tasks:
+  - name: "launch docker container"
+    docker_container:
+       name: "{{docker_container_name}}"
+       image: "{{docker_image_name}}"
+       state: started
+       ports:
+       - "{{patting_ssh_port}}:22"
+       -  "{{patting_http_port}}:3000"
+    register: docker_info
