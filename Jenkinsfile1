@@ -30,7 +30,7 @@ pipeline {
         stage('creating a container using Ansible playbook') {
             steps {
                 script {
-                      sh  'ansible-playbook dockerplaybook.yaml --extra-vars "docker_image_name=pvishnu/node-hello:${BUILD_NUMBER}"'
+                      sh  'sudo ansible-playbook --ask-become-pass dockerplaybook.yaml --extra-vars " ansible_sudo_pass=$sudo-password docker_image_name=pvishnu/node-hello:${BUILD_NUMBER}"  '
                     }
                 }
             }    
