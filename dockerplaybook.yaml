@@ -1,6 +1,7 @@
 - hosts: localhost
   become: true
   become_user: pvishnu
+  ansible_become_method: sudo
   vars:
   - dockerfile_folder: "Dockerfile"
   - docker_image_name: "pvishnu/node-hello:11"
